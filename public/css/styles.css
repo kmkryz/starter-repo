@@ -1,6 +1,108 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+/* Mobile First CSS */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+header, footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+}
+
+header .siteName a, footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#tools a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1em;
+}
+
+main {
+  padding: 1em;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  text-align: center;
+  padding: 1em;
+}
+
+.featured-cars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-cars img {
+  width: 100%;
+  height: auto;
+  margin: 1em 0;
+}
+
+/* Larger Screen Styles */
+@media (min-width: 768px) {
+  nav ul li {
+      margin: 0 2em;
+  }
+
+  .content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 2em;
+  }
+
+  .featured-cars {
+      flex-direction: row;
+      justify-content: space-around;
+  }
+
+  .featured-cars img {
+      width: 30%;
+      margin: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+      position: relative;
+  }
+
+  .hero img {
+      width: 100%;
+      height: auto;
+  }
+
+  .content {
+      flex-direction: column;
+      padding: 3em;
+  }
+
+  .featured-cars img {
+      width: 25%;
+  }
 }
