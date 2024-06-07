@@ -26,10 +26,17 @@ header .siteName a, footer a {
   text-decoration: none;
 }
 
+nav .nav-container {
+  background-color: #fff;
+  padding: 0.5em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
 nav ul {
   list-style: none;
   padding: 0;
   text-align: center;
+  margin: 0;
 }
 
 nav ul li {
@@ -37,10 +44,15 @@ nav ul li {
   margin: 0 1em;
 }
 
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
 .container {
   background-color: #fff;
   padding: 1em;
-  margin: 0 auto;
+  margin: 2em auto;
   max-width: 1200px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -114,7 +126,7 @@ nav ul li {
 }
 
 .upgrade-item img {
-  width: 100%;
+  width: 50%; /* Ensure images are small on mobile */
   height: auto;
   border-radius: 4px;
 }
@@ -134,6 +146,10 @@ nav ul li {
 
   nav ul li {
       margin: 0 2em;
+  }
+
+  nav ul li a {
+      color: #333;
   }
 
   .content {
@@ -157,6 +173,10 @@ nav ul li {
   .upgrade-item {
       flex: 1 1 20%;
       margin: 1em;
+  }
+
+  .upgrade-item img {
+      width: 100%; /* Ensure images are larger on larger screens */
   }
 }
 
