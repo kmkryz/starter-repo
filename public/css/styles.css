@@ -41,9 +41,38 @@ main {
   padding: 1em;
 }
 
+.hero {
+  position: relative;
+  text-align: center;
+}
+
 .hero img {
   width: 100%;
   height: auto;
+}
+
+.hero-text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.hero-text h2 {
+  color: #00f;
+  font-weight: bold;
+}
+
+.hero-text button {
+  background-color: #00f;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .content {
@@ -51,16 +80,44 @@ main {
   padding: 1em;
 }
 
-.featured-cars {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.reviews, .upgrades {
+  margin: 2em 0;
 }
 
-.featured-cars img {
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews ul li {
+  margin: 0.5em 0;
+}
+
+.upgrades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upgrade-item {
+  flex: 1 1 calc(50% - 2em);
+  margin: 1em;
+  background-color: #00f;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.upgrade-item img {
   width: 100%;
   height: auto;
-  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.upgrade-item p {
+  margin-top: 0.5em;
+  font-weight: bold;
 }
 
 /* Larger Screen Styles */
@@ -70,39 +127,25 @@ main {
   }
 
   .content {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
       padding: 2em;
   }
 
-  .featured-cars {
-      flex-direction: row;
-      justify-content: space-around;
+  .reviews, .upgrades {
+      display: flex;
+      justify-content: space-between;
   }
 
-  .featured-cars img {
-      width: 30%;
-      margin: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero {
-      position: relative;
+  .reviews ul {
+      text-align: left;
+      width: 45%;
   }
 
-  .hero img {
-      width: 100%;
-      height: auto;
+  .upgrades {
+      flex-wrap: nowrap;
   }
 
-  .content {
-      flex-direction: column;
-      padding: 3em;
-  }
-
-  .featured-cars img {
-      width: 25%;
+  .upgrade-item {
+      flex: 1 1 20%;
+      margin: 1em;
   }
 }
