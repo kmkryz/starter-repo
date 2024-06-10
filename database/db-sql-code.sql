@@ -244,7 +244,7 @@ VALUES (
 UPDATE inventory
 SET inv_description = REPLACE(
         inv_description,
-        'small interiors',
+        'the small interiors',
         'a huge interior'
     )
 WHERE inv_id = 10;
