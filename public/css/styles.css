@@ -169,7 +169,12 @@ main h1 {
   color: rgba(77,4,5,255) ;
 }
 
+#error-p {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0;
 
+}
 /* Larger Screen Styles */
 @media (min-width: 768px) {
   body {
