@@ -1,0 +1,8 @@
+<!-- Title element to describe content of view -->
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else { %>
+  <script>window.location.href = "/";</script>
+<% }
+
+<p><%- message %></p>

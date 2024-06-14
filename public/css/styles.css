@@ -151,6 +151,24 @@ nav ul li a {
   margin-top: 0.5em;
   font-weight: bold;
 }
+main h1 {
+  background-color: #fff;
+  padding: 1em;
+  margin-bottom: 0;
+}
+#inv-display {
+  margin-top: 0;
+  padding: 1em;
+  background-color: #fff;
+  list-style: none;
+}
+#inv-display {
+  margin: 30px;
+}
+#inv-display li a {
+  color: rgba(77,4,5,255) ;
+}
+
 
 /* Larger Screen Styles */
 @media (min-width: 768px) {
@@ -165,7 +183,7 @@ nav ul li a {
   }
 
   nav ul li a {
-      color: #333;
+      color: #fff;
   }
 
   .content {

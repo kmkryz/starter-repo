@@ -1,0 +1,10 @@
+<!-- title element to describe content of view -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<%# messages() %>
+
+<%- grid %>
