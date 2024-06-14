@@ -1,0 +1,15 @@
+<div class="inventory-detail">
+    <div class="inventory-image">
+      <img src="<%= detail.image %>" alt="Image of <%= detail.make %> <%= detail.model %>">
+    </div>
+    <div class="inventory-info">
+      <h1><%= detail.make %> <%= detail.model %></h1>
+      <p><strong>Make:</strong> <%= detail.make %></p>
+      <p><strong>Model:</strong> <%= detail.model %></p>
+      <p><strong>Year:</strong> <%= detail.year %></p>
+      <p><strong>Price:</strong> $<%= new Intl.NumberFormat("en-US").format(detail.price) %></p>
+      <p><strong>Mileage:</strong> <%= new Intl.NumberFormat("en-US").format(detail.mileage) %> miles</p>
+      <p><strong>Color:</strong> <%= detail.color %></p>
+      <p><strong>Description:</strong> <%= detail.description %></p>
+    </div>
+  </div>

@@ -151,20 +151,24 @@ nav ul li a {
   margin-top: 0.5em;
   font-weight: bold;
 }
+
 main h1 {
   background-color: #fff;
   padding: 1em;
   margin-bottom: 0;
 }
+
 #inv-display {
   margin-top: 0;
   padding: 1em;
   background-color: #fff;
   list-style: none;
 }
+
 #inv-display {
   margin: 30px;
 }
+
 #inv-display li a {
   color: rgba(77,4,5,255) ;
 }
@@ -173,63 +177,106 @@ main h1 {
   background-color: #fff;
   padding: 20px;
   margin: 0;
-
 }
+
+/* Inventory Detail Styles */
+.inventory-detail {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.inventory-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.inventory-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.inventory-info {
+  flex: 2;
+  padding: 20px;
+}
+
+.inventory-info p {
+  margin: 10px 0;
+}
+
+.inventory-info p strong {
+  font-weight: bold;
+}
+
 /* Larger Screen Styles */
 @media (min-width: 768px) {
   body {
-      background-image: url('/images/site/checkerboard.jpg');
-      background-size: cover;
-      background-position: center;
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   nav ul li {
-      margin: 0 2em;
+    margin: 0 2em;
   }
 
   nav ul li a {
-      color: #fff;
+    color: #fff;
   }
 
   .content {
-      padding: 2em;
+    padding: 2em;
   }
 
   .reviews, .upgrades {
-      display: flex;
-      justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
   }
 
   .reviews ul {
-      text-align: left;
-      width: 45%;
+    text-align: left;
+    width: 45%;
   }
 
-
   .upgrade-item {
-      width: 120px; 
+    width: 120px; 
   }
 
   .upgrade-item img {
-      width: 100px; 
-      height: 100px; 
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .inventory-detail {
+    flex-direction: row;
+  }
+
+  .inventory-image, .inventory-info {
+    padding: 20px;
   }
 }
 
 @media (min-width: 1024px) {
   body {
-      background-image: url('/images/site/checkerboard.jpg');
-      background-size: cover;
-      background-position: center;
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   .hero {
-      position: relative;
+    position: relative;
   }
 
   .hero img {
-      width: 100%;
-      height: auto;
+    width: 100%;
+    height: auto;
   }
 
   .hero-text {
@@ -238,16 +285,35 @@ main h1 {
     padding: 2em;
     font-size: larger;
   }
+
   .hero-text button {
     font-size: large;
   }
 
   .content {
-      flex-direction: column;
-      padding: 3em;
+    flex-direction: column;
+    padding: 3em;
   }
 
   .featured-cars img {
-      width: 25%;
+    width: 25%;
+  }
+
+  .inventory-detail {
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 2em auto;
+  }
+
+  .inventory-image {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+  }
+
+  .inventory-info {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
   }
 }
