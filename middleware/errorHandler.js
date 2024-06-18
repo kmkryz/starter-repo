@@ -1,4 +1,4 @@
-const utilities = require('../../utilities'); // Correct path
+const utilities = require('../utilities'); // Correct path
 
 const errorHandler = async (err, req, res, next) => {
   let nav = await utilities.getNav();
