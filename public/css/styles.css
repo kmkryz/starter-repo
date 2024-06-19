@@ -27,7 +27,7 @@ header, footer {
 header .siteName a, footer a {
   color: #333;
   text-decoration: none;
-  font-size: 2em ;
+  font-size: 2em;
 }
 
 #tools a {
@@ -137,12 +137,12 @@ nav ul li a {
   padding: 0.5em;
   text-align: center;
   border-radius: 8px;
-  width: 120px; 
+  width: 120px;
 }
 
 .upgrade-item img {
-  width: 100px; 
-  height: 100px; 
+  width: 100px;
+  height: 100px;
   border-radius: 4px;
   object-fit: cover;
 }
@@ -170,7 +170,7 @@ main h1 {
 }
 
 #inv-display li a {
-  color: rgba(77,4,5,255) ;
+  color: rgba(77,4,5,255);
 }
 
 #error-p {
@@ -215,6 +215,76 @@ main h1 {
   font-weight: bold;
 }
 
+/* Login Form Styles */
+.login-form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.flash-messages {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1em;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.login-form-container form label {
+  text-align: left;
+}
+
+.login-form-container form input {
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form-container form button {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form-container form button:hover {
+  background-color: #0056b3;
+}
+
+.login-form-container p {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.login-form-container p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-form-container p a:hover {
+  text-decoration: underline;
+
+}
+
+footer {
+  margin-top: 2em;
+}
+
 /* Larger Screen Styles */
 @media (min-width: 768px) {
   body {
@@ -246,12 +316,12 @@ main h1 {
   }
 
   .upgrade-item {
-    width: 120px; 
+    width: 120px;
   }
 
   .upgrade-item img {
-    width: 100px; 
-    height: 100px; 
+    width: 100px;
+    height: 100px;
   }
 
   .inventory-detail {
@@ -260,6 +330,28 @@ main h1 {
 
   .inventory-image, .inventory-info {
     padding: 20px;
+  }
+/* 
+  main {
+    max-width: 600px;
+    margin: 2em auto;
+  } */
+
+  .flash-messages {
+    margin-bottom: 1.5em;
+  }
+
+  .login-form-container form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-form-container form label, .login-form-container form input, .login-form-container form button {
+    width: 100%;
+  }
+
+  .login-form-container form input, .login-form-container form button {
+    max-width: 400px;
   }
 }
 

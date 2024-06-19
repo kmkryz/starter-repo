@@ -9,12 +9,39 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
-const static = require("./routes/static");
+const staticRoutes = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const accountRoute = require("./routes/accountRoute"); // Require the account route file
 const errorRoute = require("./routes/errorRoute");
 const utilities = require('./utilities');
-const errorHandler = require('./middleware/errorHandler');  // Updated path
+const errorHandler = require('./middleware/errorHandler'); 
+const session = require("express-session");
+const pool = require('./database/');
+const flash = require('connect-flash');
+const messages = require('express-messages');
+
+/* ***********************
+ * Middleware
+ ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}));
+
+app.use(flash());
+
+// Express Messages Middleware
+app.use((req, res, next) => {
+  res.locals.messages = messages(req, res);
+  next();
+});
 
 /* ***********************
  * View Engine and Templates
@@ -26,11 +53,13 @@ app.set("layout", "./layouts/layout"); // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static);
+app.use(staticRoutes);
 // Index route
 app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
+// Account routes
+app.use("/account", accountRoute); // Add the account route with /account in the path
 // Error route
 app.use("/error", errorRoute);
 // File Not Found Route - must be last route in list
