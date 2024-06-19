@@ -20,10 +20,11 @@ const session = require("express-session");
 const pool = require('./database/');
 const flash = require('connect-flash');
 const messages = require('express-messages');
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
- ************************/
+ * ************************/
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
@@ -33,15 +34,29 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   name: 'sessionId',
-}));
-
-app.use(flash());
+}))
 
 // Express Messages Middleware
-app.use((req, res, next) => {
-  res.locals.messages = messages(req, res);
-  next();
-});
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
+
+// app.use(flash());
+
+// // Express Messages Middleware
+// app.use((req, res, next) => {
+//   res.locals.messages = messages(req, res);
+//   next();
+// });
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
+
 
 /* ***********************
  * View Engine and Templates
@@ -59,7 +74,7 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 // Account routes
-app.use("/account", accountRoute); 
+app.use("/account", require("./routes/accountRoute")); 
 // Error route
 app.use("/error", errorRoute);
 // File Not Found Route - must be last route in list
@@ -86,3 +101,4 @@ const host = process.env.HOST || '0.0.0.0';
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
 });
+
