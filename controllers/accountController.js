@@ -8,7 +8,7 @@ const accountController = {};
 accountController.getLoginPage = async function (req, res, next) {
   try {
     let nav = await utilities.getNav();
-    res.render("account/login", { // Updated to render login.ejs
+    res.render("account/login", { 
       title: "Login",
       nav
     });

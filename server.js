@@ -12,7 +12,7 @@ const app = express();
 const staticRoutes = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
-const accountRoute = require("./routes/accountRoute"); // Require the account route file
+const accountRoute = require("./routes/accountRoute"); 
 const errorRoute = require("./routes/errorRoute");
 const utilities = require('./utilities');
 const errorHandler = require('./middleware/errorHandler'); 
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // not at views root
+app.set("layout", "./layouts/layout");
 
 /* ***********************
  * Routes
@@ -59,7 +59,7 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 // Account routes
-app.use("/account", accountRoute); // Add the account route with /account in the path
+app.use("/account", accountRoute); 
 // Error route
 app.use("/error", errorRoute);
 // File Not Found Route - must be last route in list
