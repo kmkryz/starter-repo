@@ -27,7 +27,8 @@ accountController.getRegisterPage = async function (req, res, next) {
     let nav = await utilities.getNav();
     res.render("account/register", {
       title: "Register",
-      nav
+      nav,
+      errors: null
     });
   } catch (error) {
     next(error);

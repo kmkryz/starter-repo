@@ -2,6 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const accountController = require("../controllers/accountController");
 const errorHandler = require('../middleware/errorHandler');
+const regValidate = require('../utilities/account-validation')
 
 // GET route for "Login" page
 router.get("/login", accountController.getLoginPage);
@@ -10,7 +11,11 @@ router.get("/login", accountController.getLoginPage);
 router.get("/register", accountController.getRegisterPage);
 
 // POST route for "Registration" form submission
-router.post("/register", accountController.registerAccount); // Ensure this line has the correct reference
+router.post(
+    "/register",
+    regValidate.registationRules(),
+    regValidate.checkRegData,
+    accountController.registerAccount); // Ensure this line has the correct reference
 
 // Error handling middleware
 router.use(errorHandler);
