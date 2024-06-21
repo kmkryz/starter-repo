@@ -1,6 +1,10 @@
 const invModel = require("../models/inventory-model");
+
 const Util = {};
 
+/* ************************
+ * Constructs the nav HTML unordered list
+ ************************** */
 Util.getNav = async function () {
   let data = await invModel.getClassifications();
   let list = "<ul>";
@@ -17,10 +21,16 @@ Util.getNav = async function () {
       "</a>";
     list += "</li>";
   });
+  // Add links for management and add-classification
+  list += '<li><a href="/inv" title="Manage Inventory">Manage Inventory</a></li>';
+  list += '<li><a href="/inv/add-classification" title="Add Classification">Add Classification</a></li>';
   list += "</ul>";
   return list;
 };
 
+/* ************************
+ * Build Classification Grid
+ ************************** */
 Util.buildClassificationGrid = async function (data) {
   let grid = "";
   if (data.length > 0) {
@@ -68,7 +78,9 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
-
+/* ************************
+ * Build Inventory Detail
+ ************************** */
 Util.buildInventoryDetail = async function (data) {
   return {
     image: data.inv_image,
@@ -83,6 +95,19 @@ Util.buildInventoryDetail = async function (data) {
 };
 
 
-
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications();
+  let classificationList = '<select name="classification_id" id="classificationList" required>';
+  classificationList += "<option value=''>Choose a Classification</option>";
+  data.rows.forEach((row) => {
+    classificationList += '<option value="' + row.classification_id + '"';
+    if (classification_id != null && row.classification_id == classification_id) {
+      classificationList += " selected ";
+    }
+    classificationList += ">" + row.classification_name + "</option>";
+  });
+  classificationList += "</select>";
+  return classificationList;
+};
 
 module.exports = Util;

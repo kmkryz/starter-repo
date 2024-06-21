@@ -388,15 +388,87 @@ footer {
   .inventory-image, .inventory-info {
     padding: 20px;
   }
-/* 
-  main {
-    max-width: 600px;
-    margin: 2em auto;
-  } */
 
-  .flash-messages {
-    margin-bottom: 1.5em;
-  }
+
+/* Specific styles for flash messages */
+.flash-messages {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1em;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  text-align: left;
+}
+
+
+  /* Specific styles for Inventory Management and Add Classification views */
+.management-container {
+  background-color: #fff;
+  padding: 2em;
+  margin: 2em auto;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Add Classification Form Styles */
+/* Add Classification Form Styles */
+.add-classification-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.add-classification-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.add-classification-container form label {
+  text-align: left;
+}
+
+.add-classification-container form input {
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 25px;
+}
+
+.add-classification-container form button {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-classification-container form button:hover {
+  background-color: #0056b3;
+}
+
+.add-classification-container p {
+  margin-top: 1em;
+}
+
+.add-classification-container p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.add-classification-container p a:hover {
+  text-decoration: underline;
+}
 
   .login-form-container form {
     flex-direction: column;
@@ -423,6 +495,54 @@ footer {
   .register-form-container form input, .register-form-container form button {
     max-width: 400px;
   }
+}
+
+
+
+/* INVENTORY */
+
+/* Add Inventory Form Styles */
+.add-inventory-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.add-inventory-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.add-inventory-container form label {
+  text-align: left;
+}
+
+.add-inventory-container form input,
+.add-inventory-container form select,
+.add-inventory-container form textarea {
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 25px;
+}
+
+.add-inventory-container form button {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-inventory-container form button:hover {
+  background-color: #0056b3;
 }
 
 @media (min-width: 1024px) {

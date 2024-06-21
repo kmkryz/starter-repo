@@ -1,12 +1,11 @@
 
+  <div class="management-container">
     <h1>Inventory Management</h1>
 
-    <% if (messages && Object.keys(messages).length > 0) { %>
+    <% if (messages && messages.length > 0) { %>
       <div class="flash-messages">
-        <% Object.keys(messages).forEach(function(type) { %>
-          <% messages[type].forEach(function(message) { %>
-            <p class="<%= type %>"><%= message %></p>
-          <% }); %>
+        <% messages.forEach(function(message) { %>
+          <p class="<%= message.type %>"><%= message.msg %></p>
         <% }); %>
       </div>
     <% } %>
@@ -15,5 +14,6 @@
       <p><a href="/inv/add-classification">Add New Classification</a></p>
       <p><a href="/inv/add-inventory">Add New Inventory</a></p>
     </div>
+  </div>
 
 
