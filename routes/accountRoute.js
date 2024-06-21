@@ -17,6 +17,22 @@ router.post(
     regValidate.checkRegData,
     accountController.registerAccount); // Ensure this line has the correct reference
 
+// Process the login attempt
+router.post(
+    "/login",
+    (req, res) => {
+      res.status(200).send('login process')
+    }
+  )
+
+// Process the login attempt
+router.post(
+    "/register",
+    (req, res) => {
+      res.status(200).send('register process')
+    }
+  )
+
 // Error handling middleware
 router.use(errorHandler);
 
