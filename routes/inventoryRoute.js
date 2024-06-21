@@ -4,5 +4,7 @@ const invController = require("../controllers/invController");
 
 router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:inventoryId", invController.buildByInventoryId); // Correct route for detail view
+router.get("/management", invController.buildManagementView);
+
 
 module.exports = router;

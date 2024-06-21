@@ -1,0 +1,19 @@
+
+    <h1>Inventory Management</h1>
+
+    <% if (messages && Object.keys(messages).length > 0) { %>
+      <div class="flash-messages">
+        <% Object.keys(messages).forEach(function(type) { %>
+          <% messages[type].forEach(function(message) { %>
+            <p class="<%= type %>"><%= message %></p>
+          <% }); %>
+        <% }); %>
+      </div>
+    <% } %>
+
+    <div class="management-links">
+      <p><a href="/inv/add-classification">Add New Classification</a></p>
+      <p><a href="/inv/add-inventory">Add New Inventory</a></p>
+    </div>
+
+
