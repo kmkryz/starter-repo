@@ -30,13 +30,13 @@ async function getInventoryByClassificationId(classification_id) {
  * ************************** */
 async function getInventoryById(inventory_id) {
   try {
-    console.log("getInventoryById called with id:", inventory_id); // Log statement
+    // console.log("getInventoryById called with id:", inventory_id);
     const data = await pool.query(
       `SELECT * FROM public.inventory 
       WHERE inv_id = $1`,
       [inventory_id]
     );
-    console.log("Query result:", data.rows);
+    // console.log("Query result:", data.rows);
     return data.rows[0]; 
   } catch (error) {
     console.error("getInventoryById error " + error);

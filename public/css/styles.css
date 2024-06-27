@@ -338,6 +338,22 @@ main h1 {
   text-decoration: underline;
 }
 
+
+
+/* Specific styles for flash messages */
+.notice {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1em;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  text-align: left;
+  list-style: none;
+}
+
+
+
 footer {
   margin-top: 2em;
 }
@@ -390,16 +406,12 @@ footer {
   }
 
 
-/* Specific styles for flash messages */
-.flash-messages {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 1em;
-  border: 1px solid #f5c6cb;
-  margin-bottom: 1em;
-  border-radius: 4px;
-  text-align: left;
-}
+  
+
+
+
+
+
 
 
   /* Specific styles for Inventory Management and Add Classification views */

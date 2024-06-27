@@ -84,7 +84,7 @@ invCont.addClassification = async function (req, res, next) {
 
     if (addResult.rowCount === 1) {
       req.flash("notice", `Classification "${classification_name}" added successfully.`);
-      nav = await utilities.getNav(); // Refresh navigation bar
+      nav = await utilities.getNav(); 
       res.status(201).render("inventory/management", {
         title: "Inventory Management",
         nav,
@@ -169,6 +169,5 @@ invCont.addInventory = async function (req, res, next) {
     });
   }
 };
-
 
 module.exports = invCont;
