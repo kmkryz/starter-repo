@@ -341,7 +341,7 @@ main h1 {
 
 
 /* Specific styles for flash messages */
-.notice {
+.flash-messages, .error-messages {
   background-color: #f8d7da;
   color: #721c24;
   padding: 1em;
