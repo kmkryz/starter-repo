@@ -6,9 +6,6 @@ require("dotenv").config()
 
 const accountController = {};
 
-/* ***************************
- *  Get Login Page
- * ************************** */
 accountController.getLoginPage = async function (req, res, next) {
   try {
     let nav = await utilities.getNav();
@@ -22,6 +19,7 @@ accountController.getLoginPage = async function (req, res, next) {
   }
 };
 
+
 /* ***************************
  *  Get Registration Page
  * ************************** */
@@ -32,6 +30,7 @@ accountController.getRegisterPage = async function (req, res, next) {
       title: "Register",
       nav,
       messages: req.flash('notice')
+      
     });
   } catch (error) {
     next(error);
@@ -48,13 +47,15 @@ accountController.registerAccount = async function (req, res) {
   // Hash the password before storing
   let hashedPassword;
   try {
-    hashedPassword = await bcrypt.hash(account_password, 10);
+    // regular password and cost (salt is generated automatically)
+    hashedPassword = await bcrypt.hashSync(account_password, 10);
   } catch (error) {
     req.flash("notice", 'Sorry, there was an error processing the registration.');
     res.status(500).render("account/register", {
       title: "Registration",
       nav,
-      messages: req.flash('notice')
+      messages: req.flash('notice'),
+      locals: { account_firstname, account_lastname, account_email }
     });
     return;
   }
@@ -82,7 +83,8 @@ accountController.registerAccount = async function (req, res) {
       res.status(501).render("account/register", {
         title: "Registration",
         nav,
-        messages: req.flash('notice')
+        messages: req.flash('notice'),
+        locals: { account_firstname, account_lastname, account_email }
       });
     }
   } catch (error) {
@@ -90,10 +92,12 @@ accountController.registerAccount = async function (req, res) {
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
-      messages: req.flash('notice')
+      messages: req.flash('notice'),
+      locals: { account_firstname, account_lastname, account_email }
     });
   }
 };
+
 
 /* ****************************************
  *  Process login request

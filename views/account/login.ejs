@@ -1,37 +1,33 @@
-
-
-    <h1><%= title %></h1>
-    <% if (messages) { %>
-      <% Object.keys(messages).forEach(function(type) { %>
-        <% if (Array.isArray(messages[type])) { %>
-          <% messages[type].forEach(function(message) { %>
-            <div class="flash-message <%= type %>"><%= message %></div>
-          <% }); %>
-        <% } %>
+<h1><%= title %></h1>
+<% if (messages) { %>
+  <% Object.keys(messages).forEach(function(type) { %>
+    <% if (Array.isArray(messages[type])) { %>
+      <% messages[type].forEach(function(message) { %>
+        <div class="flash-message <%= type %>"><%= message %></div>
       <% }); %>
     <% } %>
+  <% }); %>
+<% } %>
+
+<% if (typeof errors !== 'undefined' && errors.array().length > 0) { %>
+  <div class="error-messages">
+    <% errors.array().forEach(error => { %>
+      <p><%= error.msg %></p>
+    <% }); %>
+  </div>
+<% } %>
   
-    <% if (typeof errors !== 'undefined' && errors.array().length > 0) { %>
-      <div class="error-messages">
-        <% errors.array().forEach(error => { %>
-          <p><%= error.msg %></p>
-        <% }); %>
-      </div>
-    <% } %>
-      
 
-    <div class="login-form-container">
-      
-      <form id="loginForm" action="/account/login" method="post">
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password:</label>
-        <small>Password must be at least 12 characters long, contain at least 1 capital letter, 1 number, and 1 special character.</small>
-        <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-        <button type="submit">Login</button>
-      </form>
-      
-      <p>Don't have an account? <a href="/account/register">Register here</a></p>
-    </div>
-
-
+<div class="login-form-container">
+  
+  <form id="loginForm" action="/account/login" method="post">
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <small>Password must be at least 12 characters long, contain at least 1 capital letter, 1 number, and 1 special character.</small>
+    <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+    <button type="submit">Login</button>
+  </form>
+  
+  <p>Don't have an account? <a href="/account/register">Register here</a></p>
+</div>
