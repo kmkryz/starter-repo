@@ -1,21 +1,28 @@
 
 
     <h1><%= title %></h1>
-
-    <% if (messages && Object.keys(messages).length > 0) { %>
-        <div class="flash-messages">
-          <% Object.keys(messages).forEach(function(type) { %>
-            <% messages[type].forEach(function(message) { %>
-              <p class="<%= type %>"><%= message %></p>
-            <% }); %>
+    <% if (messages) { %>
+      <% Object.keys(messages).forEach(function(type) { %>
+        <% if (Array.isArray(messages[type])) { %>
+          <% messages[type].forEach(function(message) { %>
+            <div class="flash-message <%= type %>"><%= message %></div>
           <% }); %>
-        </div>
-      <% } %>
+        <% } %>
+      <% }); %>
+    <% } %>
+  
+    <% if (typeof errors !== 'undefined' && errors.array().length > 0) { %>
+      <div class="error-messages">
+        <% errors.array().forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }); %>
+      </div>
+    <% } %>
       
 
     <div class="login-form-container">
       
-      <form id="loginForm" action="/account/login" method="POST">
+      <form id="loginForm" action="/account/login" method="post">
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" required>
         <label for="password">Password:</label>

@@ -21,6 +21,7 @@ const pool = require('./database/');
 const flash = require('connect-flash');
 const messages = require('express-messages');
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -43,6 +44,9 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
 
 // app.use(flash());
 

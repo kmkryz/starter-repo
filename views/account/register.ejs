@@ -2,22 +2,21 @@
 
     <h1><%= title %></h1>
 
-    <% if (messages && Object.keys(messages).length > 0) { %>
-        <div class="flash-messages">
-          <% Object.keys(messages).forEach(function(type) { %>
-            <% messages[type].forEach(function(message) { %>
-              <p class="<%= type %>"><%= message %></p>
-            <% }); %>
-          <% }); %>
-        </div>
-      <% } %>
-      <% if (errors) { %>
-        <ul class="notice">
-       <% errors.array().forEach(error => { %>
-         <li><%= error.msg %></li>
-      <%  }) %>
-       </ul>
-      <% } %>
+    <% if (messages) { %>
+      <% Object.keys(messages).forEach(function(type) { %>
+        <% messages[type].forEach(function(message) { %>
+          <div class="flash-message <%= type %>"><%= message %></div>
+        <% }); %>
+      <% }); %>
+    <% } %>
+  
+    <% if (typeof errors !== 'undefined' && errors.array().length > 0) { %>
+      <div class="error-messages">
+        <% errors.array().forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }); %>
+      </div>
+    <% } %>
       
 
     <div class="register-form-container">
