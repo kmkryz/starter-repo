@@ -225,15 +225,6 @@ main h1 {
   border-radius: 8px;
 }
 
-.flash-messages {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 1em;
-  border: 1px solid #f5c6cb;
-  margin-bottom: 1em;
-  border-radius: 4px;
-  text-align: left;
-}
 
 .login-form-container form {
   display: flex;
@@ -341,7 +332,7 @@ main h1 {
 
 
 /* Specific styles for flash messages */
-.flash-messages, .error-messages {
+.flash-messages, .alert-error {
   background-color: #f8d7da;
   color: #721c24;
   padding: 1em;

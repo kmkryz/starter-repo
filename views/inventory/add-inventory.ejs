@@ -3,13 +3,14 @@
 
     <div class="add-inventory-container">
         <h1><%= title %></h1>
-        <% if (messages.length) { %>
-          <div class="flash-messages">
-            <% messages.forEach(function(message) { %>
-              <p><%= message %></p>
-            <% }); %>
-          </div>
+        <%- messages() %>
+
+        <% if (errors) { %>
+          <% errors.array().forEach(error => { %>
+            <p class="alert-error"><%= error.msg %></p>
+          <% }) %>
         <% } %>
+        
 
         <form action="/inv/add-inventory" method="POST">
             <label for="classification_id">Classification:</label>

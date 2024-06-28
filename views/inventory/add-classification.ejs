@@ -3,13 +3,14 @@
 
     <div class="add-classification-container">
         <h1><%= title %></h1>
-        <% if (messages.length) { %>
-          <div class="flash-messages">
-            <% messages.forEach(function(message) { %>
-              <p><%= message %></p>
-            <% }); %>
-          </div>
+        <%- messages() %>
+
+        <% if (errors) { %>
+          <% errors.array().forEach(error => { %>
+            <p class="alert-error"><%= error.msg %></p>
+          <% }) %>
         <% } %>
+        
 
         <form id="add-classification-form" action="/inv/add-classification" method="POST">
             <label for="classification_name">Classification Name:</label>

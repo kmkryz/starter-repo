@@ -1,12 +1,13 @@
 <div class="management-container">
     <h1>Account Management</h1>
-    <% if (messages && messages.length) { %>
-      <div class="flash-messages">
-        <% messages.forEach(function(message) { %>
-          <p><%= message %></p>
-        <% }); %>
-      </div>
+    <%- messages() %>
+
+    <% if (errors) { %>
+      <% errors.array().forEach(error => { %>
+        <p class="alert-error"><%= error.msg %></p>
+      <% }) %>
     <% } %>
+    
     <p>You're logged in.</p>
   </div>
   
