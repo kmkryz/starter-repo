@@ -343,64 +343,15 @@ main h1 {
   list-style: none;
 }
 
+.management-container {
+  list-style: none;
+}
+
 
 
 footer {
   margin-top: 2em;
 }
-
-/* Larger Screen Styles */
-@media (min-width: 768px) {
-  body {
-    background-image: url('/images/site/checkerboard.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-
-  nav ul li {
-    margin: 0 2em;
-  }
-
-  nav ul li a {
-    color: #fff;
-  }
-
-  .content {
-    padding: 2em;
-  }
-
-  .reviews, .upgrades {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .reviews ul {
-    text-align: left;
-    width: 45%;
-  }
-
-  .upgrade-item {
-    width: 120px;
-  }
-
-  .upgrade-item img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .inventory-detail {
-    flex-direction: row;
-  }
-
-  .inventory-image, .inventory-info {
-    padding: 20px;
-  }
-
-
-  
-
-
-
 
 
 
@@ -416,8 +367,7 @@ footer {
   text-align: center;
 }
 
-/* Add Classification Form Styles */
-/* Add Classification Form Styles */
+
 .add-classification-container {
   max-width: 400px;
   margin: 0 auto;
@@ -498,13 +448,12 @@ footer {
   .register-form-container form input, .register-form-container form button {
     max-width: 400px;
   }
-}
+
 
 
 
 /* INVENTORY */
 
-/* Add Inventory Form Styles */
 .add-inventory-container {
   max-width: 800px;
   margin: 0 auto;
@@ -546,6 +495,55 @@ footer {
 
 .add-inventory-container form button:hover {
   background-color: #0056b3;
+}
+
+
+/* Larger Screen Styles */
+@media (min-width: 768px) {
+  body {
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  nav ul li {
+    margin: 0 2em;
+  }
+
+  nav ul li a {
+    color: #fff;
+  }
+
+  .content {
+    padding: 2em;
+  }
+
+  .reviews, .upgrades {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .reviews ul {
+    text-align: left;
+    width: 45%;
+  }
+
+  .upgrade-item {
+    width: 120px;
+  }
+
+  .upgrade-item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .inventory-detail {
+    flex-direction: row;
+  }
+
+  .inventory-image, .inventory-info {
+    padding: 20px;
+  }
 }
 
 @media (min-width: 1024px) {

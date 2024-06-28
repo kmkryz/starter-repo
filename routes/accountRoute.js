@@ -1,4 +1,5 @@
 const express = require("express");
+const utilities = require("../utilities");
 const router = new express.Router();
 const accountController = require("../controllers/accountController");
 const errorHandler = require('../middleware/errorHandler');
@@ -27,7 +28,7 @@ router.post(
 );
 
 // GET route for "Account Management" page
-router.get("/", accountController.buildAccountManagementView);
+router.get("/", utilities.checkLogin, accountController.buildAccountManagementView);
 
 // Error handling middleware
 router.use(errorHandler);
