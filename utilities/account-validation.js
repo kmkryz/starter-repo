@@ -115,6 +115,7 @@ validate.checkLoginData = async (req, res, next) => {
       title: "Login",
       nav,
       account_email,
+      
     });
     return;
   }
