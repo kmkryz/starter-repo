@@ -3,7 +3,7 @@
 
 <%- messages() %>
 
-<form id="editForm" action="/inv/update" method="post">
+<form id="updateForm" action="/inv/update" method="post">
   <label for="classification_id">Classification:</label>
   <select id="classification_id" name="classification_id">
     <%- classificationSelect %>
@@ -39,7 +39,7 @@
   <!-- Hidden input for inv_id -->
   <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
 
-  <input type="submit" name="submit" value="Update Vehicle">
+  <button type="submit" disabled>Update Vehicle</button>
 </form>
 
 <script src="/js/inv-update.js"></script>

@@ -29,4 +29,10 @@ router.get("/edit/:inv_id", invController.editInventoryView);
 // Route to handle the update inventory request
 router.post("/update", utilities.checkUpdateData, invController.updateInventory);
 
+// Route to render the delete confirmation view
+router.get("/delete/:inv_id", invController.deleteInventoryView);
+
+// Route to handle the delete inventory request
+router.post("/delete", invController.deleteInventory);
+
 module.exports = router;
