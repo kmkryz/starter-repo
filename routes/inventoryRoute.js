@@ -3,7 +3,7 @@ const router = new express.Router();
 const invController = require("../controllers/invController");
 
 router.get("/type/:classificationId", invController.buildByClassificationId);
-router.get("/detail/:inventoryId", invController.buildByInventoryId); // Correct route for detail view
+router.get("/detail/:inventoryId", invController.buildByInventoryId); 
 router.get("/", invController.buildManagementView);
 // Route for add classification page
 router.get("/add-classification", invController.getAddClassificationPage);
