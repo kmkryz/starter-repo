@@ -1,6 +1,8 @@
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
+const utilities = require("../utilities/");
+
 
 router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:inventoryId", invController.buildByInventoryId); 
@@ -20,5 +22,11 @@ router.post("/add-inventory", invController.addInventory);
 
 // Route to get inventory by classification as JSON
 router.get("/getInventory/:classification_id", invController.getInventoryJSON);
+
+// Route to render the edit inventory view
+router.get("/edit/:inv_id", invController.editInventoryView);
+
+// Route to handle the update inventory request
+router.post("/update", utilities.checkUpdateData, invController.updateInventory);
 
 module.exports = router;

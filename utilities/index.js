@@ -4,6 +4,7 @@ require("dotenv").config()
 
 const Util = {};
 
+
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
@@ -147,6 +148,40 @@ Util.checkLogin = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+
+
+ /* ***************************
+ *  Check Update Inventory Data
+ * ************************** */
+Util.checkUpdateData = async (req, res, next) => {
+  const { inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body;
+  let errors = validationResult(req);
+  
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const classificationSelect = await utilities.buildClassificationList(classification_id);
+    const itemName = `${inv_make} ${inv_model}`;
+    res.status(501).render("inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationSelect: classificationSelect,
+      errors: errors.array(),
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    });
+  } else {
+    next();
+  }
+};
 
 
 
