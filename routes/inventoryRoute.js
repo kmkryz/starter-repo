@@ -17,4 +17,8 @@ router.get("/add-inventory", invController.getAddInventoryPage);
 // Route to process add inventory form
 router.post("/add-inventory", invController.addInventory);
 
+
+// Route to get inventory by classification as JSON
+router.get("/getInventory/:classification_id", invController.getInventoryJSON);
+
 module.exports = router;
