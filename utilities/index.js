@@ -167,7 +167,7 @@ Util.checkUpdateData = async (req, res, next) => {
       title: "Edit " + itemName,
       nav,
       classificationSelect: classificationSelect,
-      errors: errors.array(),
+      errors: null,
       inv_id,
       inv_make,
       inv_model,

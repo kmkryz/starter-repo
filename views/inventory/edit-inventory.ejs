@@ -28,18 +28,17 @@
   <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= inv_thumbnail %>">
 
   <label for="inv_price">Price:</label>
-  <input type="text" id="inv_price" name="inv_price" value="<%= inv_price %>">
+  <input type="number" id="inv_price" name="inv_price" value="<%= inv_price %>">
 
   <label for="inv_miles">Miles:</label>
-  <input type="text" id="inv_miles" name="inv_miles" value="<%= inv_miles %>">
+  <input type="number" id="inv_miles" name="inv_miles" value="<%= inv_miles %>">
 
   <label for="inv_color">Color:</label>
   <input type="text" id="inv_color" name="inv_color" value="<%= inv_color %>">
 
-  <!-- Hidden input for inv_id -->
-  <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+  <input type="hidden" name="inv_id" value="<%= inv_id %>">
 
-  <button type="submit" disabled>Update Vehicle</button>
+  <button type="submit">Update Vehicle</button>
 </form>
 
 <script src="/js/inv-update.js"></script>
