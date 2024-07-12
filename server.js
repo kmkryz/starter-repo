@@ -48,14 +48,6 @@ app.use(cookieParser())
 
 app.use(utilities.checkJWTToken)
 
-// app.use(flash());
-
-// // Express Messages Middleware
-// app.use((req, res, next) => {
-//   res.locals.messages = messages(req, res);
-//   next();
-// });
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -78,7 +70,7 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 // Account routes
-app.use("/account", require("./routes/accountRoute")); 
+app.use("/account", accountRoute); 
 // Error route
 app.use("/error", errorRoute);
 // File Not Found Route - must be last route in list
@@ -105,4 +97,3 @@ const host = process.env.HOST || '0.0.0.0';
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
 });
-

@@ -41,10 +41,40 @@ async function getAccountByEmail (account_email) {
   }
 }
 
+// Add this method to get account data by ID
+async function getAccountById(accountId) {
+  try {
+    const result = await pool.query("SELECT * FROM account WHERE account_id = $1", [accountId]);
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error fetching account by ID:", error);
+    return null;
+  }
+}
 
+// Method to update account information
+async function updateAccount(accountId, account_firstname, account_lastname, account_email) {
+  try {
+    const sql = "UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4 RETURNING *";
+    const result = await pool.query(sql, [account_firstname, account_lastname, account_email, accountId]);
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
+// Method to update account password
+async function updatePassword(accountId, hashedPassword) {
+  try {
+    const sql = "UPDATE account SET account_password = $1 WHERE account_id = $2 RETURNING *";
+    const result = await pool.query(sql, [hashedPassword, accountId]);
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
 // Export the registerAccount function
 module.exports = {
-  registerAccount, checkExistingEmail, getAccountByEmail
+  registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword
 };

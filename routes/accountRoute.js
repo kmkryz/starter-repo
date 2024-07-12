@@ -30,6 +30,18 @@ router.post(
 // GET route for "Account Management" page
 router.get("/", utilities.checkLogin, accountController.buildAccountManagementView);
 
+// Add this route for updating account information
+router.get("/update/:accountId", utilities.checkLogin, accountController.getUpdateAccountPage);
+
+// Add this route to handle account information update
+router.post("/update/:accountId", utilities.checkLogin, regValidate.updateAccountRules(), regValidate.checkUpdateData, accountController.updateAccount);
+
+// Add this route to handle password change
+router.post("/change-password/:accountId", utilities.checkLogin, regValidate.passwordChangeRules(), regValidate.checkPasswordChangeData, accountController.changePassword);
+
+// Add this route for logging out
+router.get("/logout", accountController.logout);
+
 // Error handling middleware
 router.use(errorHandler);
 

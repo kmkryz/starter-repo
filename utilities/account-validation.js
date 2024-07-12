@@ -44,14 +44,14 @@ validate.registationRules = () => {
       body("account_password")
         .trim()
         .notEmpty()
-        .isStrongPassword({
-          minLength: 12,
-          minLowercase: 1,
-          minUppercase: 1,
-          minNumbers: 1,
-          minSymbols: 1,
-        })
-        .withMessage("Password does not meet requirements."),
+        .isLength({ min: 12 })
+        .withMessage("Password must be at least 12 characters long.")
+        .matches(/\d/)
+        .withMessage("Password must contain a number.")
+        .matches(/[A-Z]/)
+        .withMessage("Password must contain an uppercase letter.")
+        .matches(/[^a-zA-Z0-9]/)
+        .withMessage("Password must contain a special character."),
     ]
   }
 
@@ -121,5 +121,82 @@ validate.checkLoginData = async (req, res, next) => {
   }
   next();
 };
-  
-  module.exports = validate
+
+// Update account validation rules
+validate.updateAccountRules = () => {
+  return [
+    body("account_firstname").notEmpty().withMessage("First name is required."),
+    body("account_lastname").notEmpty().withMessage("Last name is required."),
+    body("account_email")
+      .isEmail()
+      .withMessage("A valid email is required.")
+      .custom(async (account_email, { req }) => {
+        const accountId = req.params.accountId;
+        const accountData = await accountModel.getAccountById(accountId);
+        if (accountData.account_email !== account_email) {
+          const emailExists = await accountModel.checkExistingEmail(account_email);
+          if (emailExists) {
+            throw new Error("Email already exists.");
+          }
+        }
+      }),
+  ];
+};
+
+// Password change validation rules
+validate.passwordChangeRules = () => {
+  return [
+    body("new_password")
+      .isLength({ min: 12 })
+      .withMessage("Password must be at least 12 characters long.")
+      .matches(/\d/)
+      .withMessage("Password must contain a number.")
+      .matches(/[A-Z]/)
+      .withMessage("Password must contain an uppercase letter.")
+      .matches(/[^a-zA-Z0-9]/)
+      .withMessage("Password must contain a special character."),
+    body("confirm_new_password")
+      .custom((value, { req }) => {
+        if (value !== req.body.new_password) {
+          throw new Error("Password confirmation does not match password.");
+        }
+        return true;
+      }),
+  ];
+};
+
+// Check update account data
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const accountData = await accountModel.getAccountById(req.params.accountId);
+    res.render("account/update", {
+      title: "Update Account Information",
+      nav,
+      errors,
+      accountData,
+    });
+    return;
+  }
+  next();
+};
+
+// Check password change data
+validate.checkPasswordChangeData = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const accountData = await accountModel.getAccountById(req.params.accountId);
+    res.render("account/update", {
+      title: "Update Account Information",
+      nav,
+      errors,
+      accountData,
+    });
+    return;
+  }
+  next();
+};
+
+module.exports = validate

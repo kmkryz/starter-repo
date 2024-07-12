@@ -143,4 +143,91 @@ accountController.buildAccountManagementView = async function (req, res, next) {
   
 };
 
+// Add this method to render the update account page
+accountController.getUpdateAccountPage = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const accountId = req.params.accountId;
+  const accountData = await accountModel.getAccountById(accountId);
+
+  if (!accountData) {
+    req.flash("notice", "Account not found.");
+    return res.redirect("/account");
+  }
+
+  res.render("account/update", {
+    title: "Update Account Information",
+    nav,
+    errors: null,
+    accountData
+  });
+};
+
+// Method to handle account information update
+accountController.updateAccount = async function (req, res) {
+  const { account_firstname, account_lastname, account_email } = req.body;
+  const accountId = req.params.accountId;
+  let nav = await utilities.getNav();
+
+  try {
+    const updateResult = await accountModel.updateAccount(accountId, account_firstname, account_lastname, account_email);
+    if (updateResult.rowCount === 1) {
+      req.flash("notice", "Account information updated successfully.");
+      const updatedAccountData = await accountModel.getAccountById(accountId);
+      res.render("account/management", {
+        title: "Account Management",
+        nav,
+        errors: null,
+        accountData: updatedAccountData,
+      });
+    } else {
+      req.flash("notice", "Failed to update account information.");
+      return res.redirect(`/account/update/${accountId}`);
+    }
+  } catch (error) {
+    req.flash("notice", "An error occurred while updating account information.");
+    return res.redirect(`/account/update/${accountId}`);
+  }
+};
+
+// Method to handle password change
+accountController.changePassword = async function (req, res) {
+  const { current_password, new_password } = req.body;
+  const accountId = req.params.accountId;
+  let nav = await utilities.getNav();
+
+  try {
+    const accountData = await accountModel.getAccountById(accountId);
+    if (!accountData || !(await bcrypt.compare(current_password, accountData.account_password))) {
+      req.flash("notice", "Current password is incorrect.");
+      return res.redirect(`/account/update/${accountId}`);
+    }
+
+    const hashedPassword = await bcrypt.hash(new_password, 10);
+    const updateResult = await accountModel.updatePassword(accountId, hashedPassword);
+    if (updateResult.rowCount === 1) {
+      req.flash("notice", "Password changed successfully.");
+      const updatedAccountData = await accountModel.getAccountById(accountId);
+      res.render("account/management", {
+        title: "Account Management",
+        nav,
+        errors: null,
+        accountData: updatedAccountData,
+      });
+    } else {
+      req.flash("notice", "Failed to change password.");
+      return res.redirect(`/account/update/${accountId}`);
+    }
+  } catch (error) {
+    req.flash("notice", "An error occurred while changing password.");
+    return res.redirect(`/account/update/${accountId}`);
+  }
+};
+
+// Add this method to handle the logout process
+accountController.logout = async function (req, res) {
+  res.clearCookie("jwt");
+  req.flash("notice", "You have been logged out.");
+  res.redirect("/");
+};
+
 module.exports = accountController;
