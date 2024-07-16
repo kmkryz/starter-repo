@@ -74,7 +74,29 @@ async function updatePassword(accountId, hashedPassword) {
   }
 }
 
+// Function to add a comment
+async function addComment(accountId, commentText) {
+  try {
+    const sql = "INSERT INTO comments (account_id, comment_text) VALUES ($1, $2) RETURNING *";
+    const result = await pool.query(sql, [accountId, commentText]);
+    return result.rows[0];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+// Function to get comments by account ID
+async function getCommentsByAccountId(accountId) {
+  try {
+    const sql = "SELECT * FROM comments WHERE account_id = $1 ORDER BY comment_date DESC";
+    const result = await pool.query(sql, [accountId]);
+    return result.rows;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 // Export the registerAccount function
 module.exports = {
-  registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword
+  registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword, addComment, getCommentsByAccountId
 };

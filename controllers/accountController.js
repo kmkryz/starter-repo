@@ -230,4 +230,35 @@ accountController.logout = async function (req, res) {
   res.redirect("/");
 };
 
+// Method to render the comments page
+accountController.getCommentsPage = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const accountId = req.params.accountId;
+  const comments = await accountModel.getCommentsByAccountId(accountId);
+
+  res.render("account/comments", {
+    title: "Account Comments",
+    nav,
+    errors: null,
+    comments,
+    accountId
+  });
+};
+
+// Method to handle adding a comment
+accountController.addComment = async function (req, res) {
+  const { comment_text } = req.body;
+  const accountId = req.params.accountId;
+  let nav = await utilities.getNav();
+
+  try {
+    await accountModel.addComment(accountId, comment_text);
+    req.flash("notice", "Comment added successfully.");
+    res.redirect(`/account/comments/${accountId}`);
+  } catch (error) {
+    req.flash("notice", "An error occurred while adding the comment.");
+    res.redirect(`/account/comments/${accountId}`);
+  }
+};
+
 module.exports = accountController;

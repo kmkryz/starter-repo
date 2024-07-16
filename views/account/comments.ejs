@@ -1,0 +1,22 @@
+<h1 class="comments-title"><%= title %></h1>
+<%- messages() %>
+
+<div class="comments-container">
+  <h2 class="comments-header">Comments</h2>
+  <form class="comments-form" action="/account/comments/<%= accountId %>" method="post">
+    <label for="comment_text">Add a Comment:</label>
+    <textarea id="comment_text" name="comment_text" required></textarea>
+    <button type="submit">Add Comment</button>
+  </form>
+
+  <h3 class="previous-comments-header">Previous Comments</h3>
+  <% if (comments.length > 0) { %>
+    <ul class="comments-list">
+      <% comments.forEach(comment => { %>
+        <li class="comment-item"><strong><%= comment.comment_date %>:</strong> <%= comment.comment_text %></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p class="no-comments">No comments yet.</p>
+  <% } %>
+</div>

@@ -42,6 +42,10 @@ router.post("/change-password/:accountId", utilities.checkLogin, regValidate.pas
 // Add this route for logging out
 router.get("/logout", accountController.logout);
 
+// Add routes for comments
+router.get("/comments/:accountId", utilities.checkLogin, accountController.getCommentsPage);
+router.post("/comments/:accountId", utilities.checkLogin, accountController.addComment);
+
 // Error handling middleware
 router.use(errorHandler);
 

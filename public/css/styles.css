@@ -498,37 +498,51 @@ footer {
 }
 
 /* General form styles */
-.form-container {
+.form-container,
+.comments-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-container h2 {
+.form-container h2,
+.comments-header,
+.previous-comments-header {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
 }
 
-.form-container label {
+.form-container label,
+.comments-form label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #555;
 }
 
 .form-container input[type="text"],
 .form-container input[type="email"],
-.form-container input[type="password"] {
+.form-container input[type="password"],
+.form-container textarea,
+.comments-form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  font-size: 1em;
+  color: #333;
+  box-sizing: border-box;
 }
 
-.form-container button[type="submit"] {
+.form-container button[type="submit"],
+.comments-form button[type="submit"] {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -536,15 +550,63 @@ footer {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
-.form-container button[type="submit"]:hover {
+.form-container button[type="submit"]:hover,
+.comments-form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
 .alert-error {
   color: red;
   margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Comments container styles */
+.comments-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comments-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.comments-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.comment-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.no-comments {
+  text-align: center;
+  color: #777;
+  font-style: italic;
 }
 
 /* Larger Screen Styles */

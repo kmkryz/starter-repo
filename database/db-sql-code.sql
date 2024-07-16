@@ -261,3 +261,10 @@ SET inv_thumbnail = REPLACE(
         'images/',
         'images/vehicles/'
     );
+CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
+    account_id INTEGER NOT NULL,
+    comment_text TEXT NOT NULL,
+    comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (account_id) REFERENCES account(account_id)
+);
